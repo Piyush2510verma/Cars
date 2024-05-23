@@ -1,0 +1,31 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Image Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Car Image Search</h1>
+        <div class="form-container">
+            <form action="/search" method="GET">
+                <input type="text" name="model" placeholder="Enter car model...">
+                <input type="submit" value="Search">
+            </form>
+        </div>
+        {% if error %}
+        <div class="error-message">{{ error }}</div>
+        {% endif %}
+        <div class="image-container">
+            {% if image_url %}
+            <img src="{{ image_url }}" alt="Car Image">
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
